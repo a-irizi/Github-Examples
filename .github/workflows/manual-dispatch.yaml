@@ -1,0 +1,32 @@
+name: Manual Trigger workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name of persion to greet'
+        required: true
+        type: string
+      greeting:
+        description: 'Type of greetings'
+        required: true
+        type: string
+      date:
+        description: 'Base64 encoded content of a file'
+        required: false
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decode File content
+        run: |
+          echo "${{inputs.data}}" | base64 --decode > ./decoded_file.txt
+      - name: Display Greeting
+        run: |
+          echo "${{inputs.greeting}}, ${{inputs.name}}!"
+      - name: Display file content
+        run: |
+          echo "contents of file:"
+          cat ./decoded_file.txt
