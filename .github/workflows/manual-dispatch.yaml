@@ -11,7 +11,7 @@ on:
         description: 'Type of greetings'
         required: true
         type: string
-      date:
+      data:
         description: 'Base64 encoded content of a file'
         required: false
         type: string
