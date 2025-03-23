@@ -1,0 +1,23 @@
+name: Single & Multiple events
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  hello_world:
+    runs-on: debian-latest
+    steps:
+      - name: "Say hello to world"
+        run: |
+          echo "REF: $GITHUB_REF"
+          echo "Job ID: $GITHUB_JOB"
+          echo "Action: $GITHUB_ACTION"
+          echo "Actor: $GITHUB_ACTOR"
+
+
